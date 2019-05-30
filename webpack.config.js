@@ -8,7 +8,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
-  entry: './src/js/main.js',
+  entry: './src/js/loader.js',
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -16,6 +16,13 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
       {
         test: /\.scss$/,
         use: [
